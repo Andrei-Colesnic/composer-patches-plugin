@@ -169,14 +169,14 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 		$patchSets = array();
 		foreach ($packages as $package) {
 			$extra = $package->getExtra();
-			if (isset($extra['patches']) && $initialPackage->getName() != $package->getName()) {
-				$patchSets[$package->getName()] = array($extra['patches'], array($initialPackage));
+			if (isset($extra['patches_core']) && $initialPackage->getName() != $package->getName()) {
+				$patchSets[$package->getName()] = array($extra['patches_core'], array($initialPackage));
 			}
 		}
 
 		$extra = $initialPackage->getExtra();
-		if (isset($extra['patches'])) {
-			$patchSets[$initialPackage->getName()] = array($extra['patches'], $packages);
+		if (isset($extra['patches_core'])) {
+			$patchSets[$initialPackage->getName()] = array($extra['patches_core'], $packages);
 		}
 
 		$patchesAndPackages = array();
